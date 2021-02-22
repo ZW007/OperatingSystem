@@ -1,10 +1,6 @@
 /***********************************************************************
  * Author: Zhen WANG, Rong TU
-
-* UTD ID: zxw180035, 2021544504
-
-* CS 5348.001 Operating Systems
-
+ 
 * Prof. S Venkatesan
 
 * Project - 2*
