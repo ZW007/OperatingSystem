@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <sys/stat.h> // for mkdir 
+#include <errno.h>
 
 #define BUF_SIZE 256
 
@@ -22,8 +23,13 @@ int read_socket(int sock, char *buf, int size) {
 }
 
 int main(){
+    errno = 0;
     //create socket
     int serv_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if(errno!=0){
+        printf("socket create error： %s\n",strerror(errno));
+        exit(0);
+    }
 
     //bind
     struct sockaddr_in serv_addr;

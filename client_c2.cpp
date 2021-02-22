@@ -4,16 +4,21 @@
 #include <unistd.h> 
 #include <arpa/inet.h>
 #include <sys/socket.h>
+#include <errno.h>
 
 #define BUF_SIZE 256
 
 int main(){
 
-    
+    errno=0;
     FILE * fp;
 
     //creat socket
     int sock = socket(AF_INET, SOCK_STREAM, 0);
+     if(errno!=0){
+        printf("socket create error： %s\n",strerror(errno));
+        exit(0);
+    }
     //request to the server_c1 
     struct sockaddr_in serv_addr;
     memset(&serv_addr, 0, sizeof(serv_addr));  //fill every byte 0 first
